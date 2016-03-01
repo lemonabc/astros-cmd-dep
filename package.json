@@ -1,6 +1,6 @@
 {
   "name": "astros-cmd-dep",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "",
   "main": "astros-cmd-dep.js",
   "scripts": {
