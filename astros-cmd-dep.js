@@ -32,12 +32,17 @@ module.exports = new astro.Middleware({
     }
 
     getJsDependent(asset, function(errorMsg, jsLibs) {
-        asset.jsLibs = [errorMsg, jsLibs];
 
+        asset.jsLibs = asset.jsLibs || ['', []];
+        asset.jsLibs[0] = asset.jsLibs[0] ? asset.jsLibs[0] + '\n' + errorMsg :
+            errorMsg;
+        asset.jsLibs[1] = jsLibs.concat(asset.jsLibs[1]);
+
+
+        // asset.jsLibs = [errorMsg, jsLibs];
         if(asset.fileType === 'css'){
             asset.data = data;
         }
-
         next(asset);
     });
 });
